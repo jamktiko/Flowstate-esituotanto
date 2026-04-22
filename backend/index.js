@@ -27,4 +27,4 @@ app.listen(PORT, () => {
   console.log(`Palvelin pyörii portissa ${PORT}`);
 });
 
-console.log('Deploy testi 1');
+console.log('Deploy testi');
