@@ -1,4 +1,3 @@
-#comment to deploy workflow
 name: Deploy Backend to Elastic Beanstalk
 
 on:
