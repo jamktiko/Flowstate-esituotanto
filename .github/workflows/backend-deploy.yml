@@ -1,0 +1,33 @@
+name: Deploy Backend to Elastic Beanstalk
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Generate deployment package
+        run: |
+          cd backend
+          zip -r ../deploy.zip . -x "*.git*" # Pakataan vain backendin sisältö
+          cd ..
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v22
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: flowstate-backend
+          environment_name: Flowstate-backend-env
+          version_label: 'deploy-${{ github.sha }}'
+          region: eu-north-1
+          deployment_package: deploy.zip
