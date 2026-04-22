@@ -18,7 +18,7 @@ jobs:
       - name: Generate deployment package
         run: |
           cd backend
-          zip -r ../deploy.zip . -x "*.git*" # Pakataan vain backendin sisältö
+          zip -r ../deploy.zip . -x "*.git*"
           cd ..
 
       - name: Deploy to EB
