@@ -26,3 +26,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Palvelin pyörii portissa ${PORT}`);
 });
+
+console.log('Deploy testi');
