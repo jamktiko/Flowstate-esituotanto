@@ -23,6 +23,10 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/', (req, res) => {
+  res.status(200).send('OK');
+});
+
 app.listen(PORT, () => {
   console.log(`Palvelin pyörii portissa ${PORT}`);
 });
